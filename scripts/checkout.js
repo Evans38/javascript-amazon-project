@@ -7,6 +7,9 @@
 
  hello();
 
+
+ function renderOrderSummary(){
+
  let cartSummaryHTML ='';
  cart.forEach((cartItem)=>{
     const productId = cartItem.productId;
@@ -124,5 +127,10 @@
   element.addEventListener('click',()=>{
     const {productId,deliveryOptionId} = element.dataset;
       updateDeliveryOption(productId, deliveryOptionId);
+      renderOrderSummary();
   })
  })
+
+}
+
+renderOrderSummary();
