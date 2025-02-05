@@ -7,7 +7,7 @@ import {deliveryOptions,getDeliveryOption} from '../../data/deliveryOptions.js';
 import { renderPaymentSummary } from './paymentSummary.js';
 
 export function renderOrderSummary(){
-  
+
 let cartSummaryHTML ='';
 cart.forEach((cartItem)=>{
    const productId = cartItem.productId;
@@ -110,6 +110,7 @@ document.querySelectorAll('.js-delete-link').forEach((link)=>{
    container.remove();
 
   renderOrderSummary();
+  renderPaymentSummary();
 
  })
 });
