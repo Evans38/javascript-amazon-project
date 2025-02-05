@@ -4,11 +4,10 @@ import { formatCurrency } from '../utils/money.js';
 import {hello} from 'https://unpkg.com/supersimpledev@1.0.1/hello.esm.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import {deliveryOptions,getDeliveryOption} from '../../data/deliveryOptions.js';
-
-hello();
+import { renderPaymentSummary } from './paymentSummary.js';
 
 export function renderOrderSummary(){
-
+  
 let cartSummaryHTML ='';
 cart.forEach((cartItem)=>{
    const productId = cartItem.productId;
@@ -110,6 +109,8 @@ document.querySelectorAll('.js-delete-link').forEach((link)=>{
   const container =  document.querySelector(`.js-cart-item-container-${productId}`);
    container.remove();
 
+  renderOrderSummary();
+
  })
 });
 
@@ -118,6 +119,7 @@ document.querySelectorAll('.js-delivery-option').forEach((element)=>{
    const {productId,deliveryOptionId} = element.dataset;
      updateDeliveryOption(productId, deliveryOptionId);
      renderOrderSummary();
+     renderPaymentSummary();
  })
 });
 
